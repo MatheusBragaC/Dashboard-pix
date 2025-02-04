@@ -1,21 +1,28 @@
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState, useEffect, useCallback, useMemo } from "react";
 import ReactFlow, { Background, Controls, applyNodeChanges } from "reactflow";
 import "reactflow/dist/style.css";
-import CustomNode from "../components/CustomNode"; // Importando o boneco customizado
+import CustomNode from "../components/CustomNode";
 import api from "../services/api";
+
+const nodeTypes = { customNode: CustomNode };
 
 function FlowCanvas({ users }) {
   const [nodes, setNodes] = useState([]);
 
   useEffect(() => {
-    const newNodes = users.map((user, index) => ({
-      id: user.idusuarios ? user.idusuarios.toString() : `user-${index}`,
-      position: { x: 100 + index * 120, y: 50 },
-      data: { label: user.name || "Usuário Desconhecido" },
-      type: "customNode", // Define que este nó usa o componente `CustomNode`
-    }));
+    if (users.length > 0 && nodes.length === 0) {
+      const newNodes = users.map((user, index) => ({
+        id: user.idusuarios ? user.idusuarios.toString() : `user-${index}`,
+        position: { x: 100 + index * 120, y: 50 },
+        data: { 
+          label: user.name || "Usuário Desconhecido",
+          skinIndex: index 
+        },
+        type: "customNode",
+      }));
 
-    setNodes(newNodes);
+      setNodes(newNodes);
+    }
   }, [users]);
 
   const onNodesChange = useCallback(
@@ -27,7 +34,7 @@ function FlowCanvas({ users }) {
     <div className="h-screen w-full bg-gray-900 flex items-center justify-center">
       <ReactFlow
         nodes={nodes}
-        nodeTypes={{ customNode: CustomNode }} // Diz ao React Flow para usar o boneco personalizado
+        nodeTypes={nodeTypes} // 🔥 Agora não recriamos esse objeto toda vez
         onNodesChange={onNodesChange}
         fitView
       >
