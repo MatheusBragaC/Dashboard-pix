@@ -11,9 +11,8 @@ function Login() {
   const onSubmit = async (data) => {
     try {
       const response = await api.post("/auth/login", data);
-      console.log("Resposta da API:", response); // <-- DEBUGANDO A RESPOSTA
+      console.log("Resposta da API:", response);
 
-      // Garante que o token existe antes de salvar
       if (response.status === 200 && response.data) {
         api.defaults.headers.common["Authorization"] = `Bearer ${response.data}`;
         localStorage.setItem("token", response.data);
@@ -64,6 +63,14 @@ function Login() {
             Entrar
           </button>
         </form>
+
+        {/* 🔥 Adicionado o link para a página de Registro */}
+        <p className="text-gray-400 text-center mt-4">
+          Ainda não tem uma conta?{" "}
+          <a href="/register" className="text-blue-400 hover:underline">
+            Registre-se aqui
+          </a>
+        </p>
       </div>
     </div>
   );
