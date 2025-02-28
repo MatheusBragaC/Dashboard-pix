@@ -12,11 +12,16 @@ function Register() {
 
   const onSubmit = async (data) => {
     try {
+      data.role = parseInt(data.role, 10); // Converte role para número
+
+      // Remove qualquer campo "rule" antes do envio
+      delete data.rule;
+
       const response = await api.post("/users/register", data);
       console.log("Usuário registrado com sucesso:", response.data);
 
       setSuccessMessage("Cadastro realizado com sucesso! Redirecionando...");
-      setTimeout(() => navigate("/"), 2000); // Redireciona para login após 2s
+      setTimeout(() => navigate("/"), 2000);
     } catch (error) {
       console.error("Erro ao registrar usuário:", error.response?.data || error.message);
       setErrorMessage("Erro ao criar conta. Tente novamente.");
@@ -71,7 +76,17 @@ function Register() {
             />
           </div>
 
-          
+          {/* Campo corrigido para Role */}
+          <div>
+            <label className="block text-gray-300 font-medium">Tipo de Usuário</label>
+            <select
+              {...register("role", { required: true })}
+              className="w-full mt-1 px-4 py-2 bg-gray-700 border border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-white"
+            >
+              <option value="1">Usuário Normal</option>
+              <option value="2">Administrador</option>
+            </select>
+          </div>
 
           <button
             type="submit"

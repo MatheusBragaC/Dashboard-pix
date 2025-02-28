@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback, useMemo } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import ReactFlow, { Background, Controls, applyNodeChanges } from "reactflow";
 import "reactflow/dist/style.css";
 import CustomNode from "../components/CustomNode";
@@ -11,11 +11,18 @@ function FlowCanvas({ users }) {
 
   useEffect(() => {
     if (users.length > 0 && nodes.length === 0) {
+      const spacing = 150; // Espaçamento entre os cavaleiros
+      const startX = 100; // Posição inicial no eixo X
+
       const newNodes = users.map((user, index) => ({
         id: user.idusuarios ? user.idusuarios.toString() : `user-${index}`,
-        position: { x: 100 + index * 120, y: 50 },
+        position: { 
+          x: startX + index * spacing, // Posicionamento lado a lado
+          y: 200 // Altura fixa para todos começarem alinhados
+        },
         data: { 
           label: user.name || "Usuário Desconhecido",
+          rule: user.rule, 
           skinIndex: index 
         },
         type: "customNode",
@@ -34,7 +41,7 @@ function FlowCanvas({ users }) {
     <div className="h-screen w-full bg-gray-900 flex items-center justify-center">
       <ReactFlow
         nodes={nodes}
-        nodeTypes={nodeTypes} // 🔥 Agora não recriamos esse objeto toda vez
+        nodeTypes={nodeTypes}
         onNodesChange={onNodesChange}
         fitView
       >
