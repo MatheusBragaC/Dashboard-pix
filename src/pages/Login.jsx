@@ -16,7 +16,7 @@ function Login() {
       if (response.status === 200 && response.data) {
         api.defaults.headers.common["Authorization"] = `Bearer ${response.data}`;
         localStorage.setItem("token", response.data);
-        navigate("/dashboard");
+        navigate("/menu");
       } else {
         setErrorMessage("Erro ao salvar o token. Resposta inválida.");
       }
@@ -63,8 +63,6 @@ function Login() {
             Entrar
           </button>
         </form>
-
-        {/* 🔥 Adicionado o link para a página de Registro */}
         <p className="text-gray-400 text-center mt-4">
           Ainda não tem uma conta?{" "}
           <a href="/register" className="text-blue-400 hover:underline">
