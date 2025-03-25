@@ -2,13 +2,13 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 60px;
   position: relative;
   animation: breathe 2s infinite alternate ease-in-out;
   will-change: transform;
+  /* Dimensão total do personagem pixelado */
+  width: 60px;
 }
 
-/* Animação de respiração */
 @keyframes breathe {
   from {
     transform: scale(1);
@@ -18,41 +18,71 @@
   }
 }
 
-/* Cabeça */
+/* =======================================================
+   Usamos variáveis CSS (--skin, --skin-dark, etc.)
+   para criar um efeito pixelado divertido, com
+   bordas e padronagens repetidas.
+======================================================= */
+
+/* Cabeça (pixel-art) */
 .head {
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  background: repeating-linear-gradient(
+    45deg,
+    var(--skin, #facc15) 0px,
+    var(--skin, #facc15) 3px,
+    var(--skin-dark, #caa60f) 3px,
+    var(--skin-dark, #caa60f) 6px
+  );
   border: 2px solid #000;
+  image-rendering: pixelated;
+  box-shadow: 0 0 0 1px #000 inset;
 }
 
-/* Corpo */
+/* Corpo (pixel-art) */
 .body {
-  width: 20px;
-  height: 40px;
-  border-radius: 5px;
-  margin-top: 5px;
+  margin-top: 3px;
+  width: 16px;
+  height: 28px;
+  background: repeating-linear-gradient(
+    45deg,
+    var(--body, #3b82f6) 0px,
+    var(--body, #3b82f6) 3px,
+    var(--body-dark, #2e66bb) 3px,
+    var(--body-dark, #2e66bb) 6px
+  );
+  border: 2px solid #000;
+  image-rendering: pixelated;
+  box-shadow: 0 0 0 1px #000 inset;
 }
 
-/* Braços */
+/* Braços (pixel-art), animando (wave) */
 .arms {
   display: flex;
   justify-content: space-between;
-  width: 60px;
+  width: 50px;
   position: relative;
-  top: 5px;
+  top: 2px;
 }
 
 .arm {
-  width: 15px;
-  height: 30px;
-  border-radius: 5px;
-  animation: wave 1s infinite alternate ease-in-out;
+  width: 8px;
+  height: 18px;
+  border: 2px solid #000;
+  box-shadow: 0 0 0 1px #000 inset;
+  background: repeating-linear-gradient(
+    45deg,
+    var(--body, #3b82f6) 0px,
+    var(--body, #3b82f6) 3px,
+    var(--body-dark, #2e66bb) 3px,
+    var(--body-dark, #2e66bb) 6px
+  );
   transform-origin: top center;
   will-change: transform;
+  animation: wave 1s infinite alternate ease-in-out;
 }
 
-/* 🔥 Ajustamos a animação para que ela reinicie corretamente */
 @keyframes wave {
   0% {
     transform: rotate(-20deg);
@@ -65,41 +95,43 @@
   }
 }
 
-/* Pernas */
+/* Pernas (pixel-art), animando (step) */
 .legs {
   display: flex;
   justify-content: space-between;
-  width: 40px;
-  margin-top: 5px;
+  width: 30px;
+  margin-top: 3px;
 }
 
 .leg {
-  width: 15px;
-  height: 30px;
+  width: 8px;
+  height: 20px;
   background-color: #000;
-  border-radius: 5px;
+  border: 2px solid #000;
+  box-shadow: 0 0 0 1px #000 inset;
+  border-radius: 1px;
   animation: step 0.8s infinite alternate ease-in-out;
   will-change: transform;
 }
 
-/* 🔥 Ajustamos a animação das pernas para se moverem de forma contínua */
 @keyframes step {
   0% {
     transform: translateY(0);
   }
   50% {
-    transform: translateY(4px);
+    transform: translateY(3px);
   }
   100% {
-    transform: translateY(8px);
+    transform: translateY(6px);
   }
 }
 
-/* Nome */
+/* Nome do personagem */
 .name-tag {
-  margin-top: 5px;
-  font-size: 12px;
+  margin-top: 2px;
+  font-size: 10px;
   font-weight: bold;
   color: white;
   text-align: center;
+  text-shadow: 1px 1px 1px black;
 }

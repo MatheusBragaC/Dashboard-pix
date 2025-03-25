@@ -10,27 +10,28 @@ function FlowCanvas({ users }) {
   const [nodes, setNodes] = useState([]);
 
   useEffect(() => {
+    // Se já carregou os usuários e ainda não criamos os nós
     if (users.length > 0 && nodes.length === 0) {
-      const spacing = 150; // Espaçamento entre os cavaleiros
-      const startX = 100; // Posição inicial no eixo X
+      const spacing = 150; // Espaçamento horizontal
+      const startX = 100; // Posição X inicial
 
       const newNodes = users.map((user, index) => ({
         id: user.idusuarios ? user.idusuarios.toString() : `user-${index}`,
-        position: { 
-          x: startX + index * spacing, // Posicionamento lado a lado
-          y: 200 // Altura fixa para todos começarem alinhados
+        position: {
+          x: startX + index * spacing,
+          y: 200
         },
-        data: { 
+        data: {
           label: user.name || "Usuário Desconhecido",
-          rule: user.rule, 
-          skinIndex: index 
+          // Com pixel art, podemos usar skinIndex para variar as cores
+          skinIndex: index
         },
-        type: "customNode",
+        type: "customNode"
       }));
 
       setNodes(newNodes);
     }
-  }, [users]);
+  }, [users, nodes]);
 
   const onNodesChange = useCallback(
     (changes) => setNodes((nds) => applyNodeChanges(changes, nds)),
@@ -55,17 +56,15 @@ function FlowCanvas({ users }) {
 function Dashboard() {
   const [users, setUsers] = useState([]);
 
-  async function getUsers() {
-    try {
-      const response = await api.get("/users");
-      setUsers(response.data);
-    } catch (error) {
-      console.error("Erro ao buscar usuários:", error);
-    }
-  }
-
   useEffect(() => {
-    getUsers();
+    (async () => {
+      try {
+        const response = await api.get("/users");
+        setUsers(response.data);
+      } catch (error) {
+        console.error("Erro ao buscar usuários:", error);
+      }
+    })();
   }, []);
 
   return <FlowCanvas users={users} />;
