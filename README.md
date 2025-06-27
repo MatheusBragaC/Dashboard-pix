@@ -53,9 +53,9 @@ Bem-vindo ao **PIX Dashboard**! Esta aplicação web permite que usuários se ca
    yarn dev
    ```
 
-5. **Acesse:**  
-    http:/localhost:5173
-   project-front-tau.vercel.app
+5. **Acesse:**
+   - [http://localhost:5173](http://localhost:5173)
+   - [project-front-tau.vercel.app](https://project-front-tau.vercel.app)
 
 ## 🧑‍💻 Autor
 
