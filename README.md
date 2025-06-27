@@ -21,13 +21,6 @@ Bem-vindo ao **PIX Dashboard**! Esta aplicação web permite que usuários se ca
 - Proteção de rotas por autenticação JWT
 - Interface responsiva e animada
 
-## 🎨 Prints
-
-Você pode adicionar aqui prints das telas, por exemplo:
-
-- ![Tela de Login](public/vite.svg)
-- ![Dashboard](src/assets/react.svg)
-
 ## 🛠️ Como rodar localmente
 
 1. **Clone o repositório:**
@@ -61,12 +54,9 @@ Você pode adicionar aqui prints das telas, por exemplo:
    ```
 
 5. **Acesse:**  
-   http://localhost:5173
+    http:/localhost:5173
+   project-front-tau.vercel.app
 
 ## 🧑‍💻 Autor
 
-- [Seu Nome Aqui]
-
-## 📄 Licença
-
-Este projeto está sob a licença MIT.
+- Matheus Braga de Carvalho
