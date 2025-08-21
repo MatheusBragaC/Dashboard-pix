@@ -6,5 +6,5 @@
         }
     ],
     "buildCommand": "yarn build",
-    "installCommand": "corepack prepare yarn@4.6.0 --activate && yarn install"
+    "installCommand": "rm -rf node_modules yarn.lock && corepack enable && corepack prepare yarn@4.6.0 --activate && yarn install"
 }
