@@ -4,6 +4,7 @@ import "reactflow/dist/style.css";
 import CustomNode from "../components/CustomNode";
 import api from "../services/api";
 import castleUrl from "../assets/castle.svg";
+//easterEgg
 
 const nodeTypes = { customNode: CustomNode };
 
