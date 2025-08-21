@@ -6,5 +6,5 @@
         }
     ],
     "buildCommand": "yarn build",
-    "installCommand": "yarn install"
+    "installCommand": "corepack enable && yarn install"
 }
