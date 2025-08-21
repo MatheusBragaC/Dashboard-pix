@@ -6,5 +6,5 @@
         }
     ],
     "buildCommand": "yarn build",
-    "installCommand": "corepack enable && yarn install"
+    "installCommand": "corepack prepare yarn@4.6.0 --activate && yarn install"
 }
