@@ -6,5 +6,5 @@
         }
     ],
     "buildCommand": "yarn build",
-    "installCommand": "rm -rf node_modules yarn.lock && corepack enable && corepack prepare yarn@4.6.0 --activate && yarn install"
+    "installCommand": "rm -rf node_modules yarn.lock && corepack enable && corepack prepare yarn@4.6.0 --activate && /vercel/.cache/node/corepack/v1/yarn/4.6.0/yarn.js install"
 }
