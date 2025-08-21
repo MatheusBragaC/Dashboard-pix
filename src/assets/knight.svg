@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256">
+    <g fill="#8a5a2e" opacity="0.45">
+        <!-- Capacete/visores -->
+        <path
+            d="M128 20c-22 0-40 18-40 40v8l-16 8v18l16 8v10c0 22 18 40 40 40s40-18 40-40v-10l16-8V76l-16-8v-8c0-22-18-40-40-40z" />
+        <rect x="118" y="60" width="20" height="26" rx="3" />
+        <path d="M104 96h48v8a24 24 0 0 1-48 0v-8z" />
+        <!-- Tronco/ombros -->
+        <path d="M86 156l-26 12v36h136v-36l-26-12-42 30-42-30z" />
+        <!-- Escudo esquerdo -->
+        <path d="M54 196l-22 12 12 18 22-14v-16z" />
+        <!-- Espada direita -->
+        <path d="M202 192v18l22 14 12-18-22-12z" />
+    </g>
+</svg> 

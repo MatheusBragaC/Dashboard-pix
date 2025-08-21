@@ -3,6 +3,7 @@ import ReactFlow, { Background, Controls, applyNodeChanges } from "reactflow";
 import "reactflow/dist/style.css";
 import CustomNode from "../components/CustomNode";
 import api from "../services/api";
+import castleUrl from "../assets/castle.svg";
 
 const nodeTypes = { customNode: CustomNode };
 
@@ -10,23 +11,21 @@ function FlowCanvas({ users }) {
   const [nodes, setNodes] = useState([]);
 
   useEffect(() => {
-    // Se já carregou os usuários e ainda não criamos os nós
     if (users.length > 0 && nodes.length === 0) {
-      const spacing = 150; // Espaçamento horizontal
-      const startX = 100; // Posição X inicial
+      const spacing = 150;
+      const startX = 100;
 
       const newNodes = users.map((user, index) => ({
         id: user.idusuarios ? user.idusuarios.toString() : `user-${index}`,
         position: {
           x: startX + index * spacing,
-          y: 200
+          y: 200,
         },
         data: {
           label: user.name || "Usuário Desconhecido",
-          // Com pixel art, podemos usar skinIndex para variar as cores
-          skinIndex: index
+          skinIndex: index,
         },
-        type: "customNode"
+        type: "customNode",
       }));
 
       setNodes(newNodes);
@@ -39,16 +38,35 @@ function FlowCanvas({ users }) {
   );
 
   return (
-    <div className="h-screen w-full bg-gray-900 flex items-center justify-center">
-      <ReactFlow
-        nodes={nodes}
-        nodeTypes={nodeTypes}
-        onNodesChange={onNodesChange}
-        fitView
-      >
-        <Background />
-        <Controls />
-      </ReactFlow>
+    <div className="relative h-screen w-full bg-gradient-to-br from-[#1a140f] via-[#16100c] to-[#0f0b08]">
+      {/* Céu com textura e watermark de castelo */}
+      <img
+        src={castleUrl}
+        alt="Castelo"
+        className="pointer-events-none select-none absolute right-4 top-4 w-[320px] opacity-25 hidden md:block"
+      />
+
+      {/* Gramado/terra ao fundo */}
+      <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-[#2a2219] via-[#221b13] to-transparent" />
+
+      <div className="relative h-full w-full">
+        <div className="absolute left-1/2 -translate-x-1/2 top-6 z-10">
+          <h1 className="font-heading text-2xl md:text-3xl text-yellow-200 drop-shadow-[0_0_6px_rgba(120,53,15,0.25)]">
+            Mapa do Feudo
+          </h1>
+        </div>
+
+        <ReactFlow
+          nodes={nodes}
+          nodeTypes={nodeTypes}
+          onNodesChange={onNodesChange}
+          fitView
+          className="reactflow-theme"
+        >
+          <Background color="#3b2a1b" gap={24} variant="dots" />
+          <Controls className="!bg-[#2a2219]/80 !text-[#eadfc6] !border-[#3b2d1f]" />
+        </ReactFlow>
+      </div>
     </div>
   );
 }

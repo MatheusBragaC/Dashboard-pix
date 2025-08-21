@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 256" width="512" height="256">
+    <g fill="#6b4f2a" opacity="0.18">
+        <!-- Muralha -->
+        <rect x="16" y="120" width="480" height="100" />
+        <!-- Torres -->
+        <rect x="40" y="88" width="48" height="132" />
+        <rect x="144" y="72" width="56" height="148" />
+        <rect x="240" y="56" width="64" height="164" />
+        <rect x="352" y="72" width="56" height="148" />
+        <rect x="448" y="88" width="48" height="132" />
+        <!-- Crenelações -->
+        <g>
+            <rect x="24" y="112" width="16" height="16" />
+            <rect x="56" y="112" width="16" height="16" />
+            <rect x="88" y="112" width="16" height="16" />
+            <rect x="120" y="112" width="16" height="16" />
+            <rect x="152" y="112" width="16" height="16" />
+            <rect x="184" y="112" width="16" height="16" />
+            <rect x="216" y="112" width="16" height="16" />
+            <rect x="248" y="112" width="16" height="16" />
+            <rect x="280" y="112" width="16" height="16" />
+            <rect x="312" y="112" width="16" height="16" />
+            <rect x="344" y="112" width="16" height="16" />
+            <rect x="376" y="112" width="16" height="16" />
+            <rect x="408" y="112" width="16" height="16" />
+            <rect x="440" y="112" width="16" height="16" />
+            <rect x="472" y="112" width="16" height="16" />
+        </g>
+        <!-- Porta central -->
+        <rect x="232" y="152" width="48" height="68" />
+        <circle cx="272" cy="184" r="4" fill="#3a2b17" />
+    </g>
+</svg> 
